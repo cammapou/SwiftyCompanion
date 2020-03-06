@@ -10,7 +10,7 @@ import Foundation
 
 
 struct Token: Decodable {
-    let token: String
+    var token: String
     
     init(token: String) {
         self.token = token

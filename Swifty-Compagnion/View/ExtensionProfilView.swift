@@ -13,14 +13,14 @@ import UIKit
 extension ProfilViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func setupCollectionAnchor() {
-        collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
-        collectionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        collectionView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-      //  collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
-        collectionView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+        self.collectionView.topAnchor.constraint(equalTo: self.scrollView.topAnchor, constant: 10).isActive = true
+        self.collectionView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
+        self.collectionView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        self.collectionView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        
         return users.count
     }
     
@@ -30,7 +30,7 @@ extension ProfilViewController: UICollectionViewDataSource, UICollectionViewDele
 
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdCo, for: indexPath) as? ProfilCollectionViewCell {
             cell.backgroundColor = .lightGray
-            cell.setCell(listUser)
+            cell.setCell(listUser, coalitionUser)
             return cell
         }
         return UICollectionViewCell()
@@ -52,30 +52,73 @@ extension ProfilViewController: UICollectionViewDataSource, UICollectionViewDele
 extension ProfilViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupAnchorTableView() {
-        self.tableView.topAnchor.constraint(equalTo: self.collectionView.bottomAnchor, constant: 100).isActive = true
-        self.tableView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        self.tableView.topAnchor.constraint(equalTo: self.labelProject.bottomAnchor, constant: 10).isActive = true
+        self.tableView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
         self.tableView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
-        self.tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -150).isActive = true
+        self.tableView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+    
+        self.tableViewSkill.topAnchor.constraint(equalTo: self.labelSkill.bottomAnchor, constant: 10).isActive = true
+        self.tableViewSkill.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
+        self.tableViewSkill.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+        self.tableViewSkill.heightAnchor.constraint(equalToConstant: 200).isActive = true
     }
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = projectUser.filter {$0.cursus_ids.first == cursus_id && $0.status == "finished" && $0.project.parent_id == nil }.count
-        print(count)
-        return count
+        
+        var count: Int?
+         
+        if tableView == self.tableViewSkill {
+            count = skillUser.first(where: { $0.cursus.id == cursus_id})?.skills.count
+         }
+         if tableView == self.tableView {
+             count = projectUser
+                .filter { $0.cursus_ids.first == cursus_id && $0.status == "finished" && $0.project.parent_id == nil}.count
+         }
+         if (count == nil) {
+             count = 0
+         }
+         return count!
     }
-    
+ 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        
+        
+        var height: Int = 0
+        
+        if tableView == self.tableViewSkill {
+            height = 50
+        }
+        
+        if tableView == self.tableView {
+            height = 40
+        }
+        
+        return CGFloat(height)
+        
     }
-    
+ 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let newArray = projectUser.filter {$0.cursus_ids.first == cursus_id && $0.status == "finished" && $0.project.parent_id == nil }
-        let listProj = newArray[indexPath.row]
-        if let cell = tableView.dequeueReusableCell(withIdentifier: cellIdTa, for: indexPath) as? ProfilTableViewCell {
-            cell.setupCell(project: listProj)
-            cell.projectUser = listProj
-            return cell
+        if tableView == self.tableView {
+            let newArray = projectUser.filter {$0.cursus_ids.first == cursus_id && $0.status == "finished" && $0.project.parent_id == nil }
+            let listProj = newArray[indexPath.row]
+            if let cell = tableView.dequeueReusableCell(withIdentifier: cellIdTa, for: indexPath) as? ProfilTableViewCell {
+                cell.setupCell(project: listProj)
+                cell.projectUser = listProj
+                return cell
+            }
+        }
+        
+        if tableView == self.tableViewSkill {
+            if let skillSelected = skillUser.first(where: { $0.cursus.id == cursus_id}) {
+
+                let listProj = skillSelected.skills[indexPath.row]
+                if let cell = tableView.dequeueReusableCell(withIdentifier: cellIdSk, for: indexPath) as? ProfilSkillTableViewCell {
+                    cell.setupCell(project: listProj)
+                    cell.projectUser = listProj
+                    return cell
+                }
+            }
         }
         return UITableViewCell()
     }

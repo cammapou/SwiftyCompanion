@@ -12,7 +12,6 @@ import UIKit
 class CustomButton: UIButton {
  
     func setButton() {
-        //self.frame = CGRect(x: 5, y: 5, width: 30, height: 30)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.isUserInteractionEnabled = true
     }

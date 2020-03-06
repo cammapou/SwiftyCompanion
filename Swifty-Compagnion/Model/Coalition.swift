@@ -9,13 +9,14 @@
 import Foundation
 
 struct Coalition: Decodable {
-    let name:String
-    let slug:String
-    let image_url:String
-    let color:String
+    let id: Int
+    let name: String
+    let slug: String
+    let image_url: URL
+    let color: String
     
     
     enum CodingKeys: String, CodingKey {
-        case name, slug, image_url, color
+        case id, name, slug, image_url, color
     }
 }

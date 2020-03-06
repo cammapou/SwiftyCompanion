@@ -11,6 +11,7 @@ import UIKit
 
 typealias APICompletionToken = (_ listUser: Token?, _ errorString: String?) -> Void
 typealias APICompletionUser = (_ listUser: User?, _ errorString: String?) -> Void
+typealias APICompletionCoa = (_ listUser: [Coalition]?, _ errorString: String?) -> Void
 
 class APIHelper {
     
@@ -67,6 +68,28 @@ class APIHelper {
             if data != nil {
                 do {
                     let result = try JSONDecoder().decode(User.self, from: data!)
+                    completion?(result, nil)
+                } catch {
+                    completion?(nil, "Error no data!")
+                }
+            } else {print("❌ No Data \(error!.localizedDescription)")}
+        }.resume()
+    }
+    
+    func getCoa(login: String, token: String, completion: APICompletionCoa?) {
+       
+        guard let url = URL(string: "\(_baseUrl)/users/\(login)/coalitions") else {return}
+        var request = URLRequest(url: url)
+        
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if error != nil {
+                completion?(nil, error?.localizedDescription)
+            }
+            if data != nil {
+                do {
+                    let result = try JSONDecoder().decode([Coalition].self, from: data!)
                     completion?(result, nil)
                 } catch {
                     completion?(nil, "Error no data!")

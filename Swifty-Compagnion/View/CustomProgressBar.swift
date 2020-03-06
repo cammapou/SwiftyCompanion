@@ -18,4 +18,10 @@ class CustomProgressBar: UIProgressView {
       //  self.tintColor = UIColor.systemTeal
         self.translatesAutoresizingMaskIntoConstraints = false
     }
+    
+    func setLevel(level: Float) -> Float{
+         let x = Int(level)
+         let levelPercent = level - Float(x)
+         return levelPercent
+     }
 }

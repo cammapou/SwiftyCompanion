@@ -11,10 +11,25 @@ import UIKit
 
 class CustomLabel: UILabel {
     
+    func setLabelSkillCell() {
+        self.textColor = .black
+        self.textAlignment = .left
+        self.font = UIFont.systemFont(ofSize: 16)
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
     func setLabelCell() {
         self.textColor = .white
         self.textAlignment = .left
         self.font = UIFont.systemFont(ofSize: 17)
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func setLabelTitle() {
+        self.textColor = .black
+        self.textAlignment = .left
+        self.font = UIFont.boldSystemFont(ofSize: 20)
+        
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     

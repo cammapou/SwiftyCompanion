@@ -17,4 +17,8 @@ class CustomView: UIView {
         self.layer.opacity = 10
         self.layer.cornerRadius = 5
     }
+    
+    func setViewProfil() {
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
 }

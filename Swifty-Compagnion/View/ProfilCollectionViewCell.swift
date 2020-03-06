@@ -10,9 +10,12 @@ import UIKit
 
 class ProfilCollectionViewCell: UICollectionViewCell {
     
-    var listUser: User!
+    var listUser: User?
+    var listcoa: Coalition?
+    
     var cursus_id: Int = 1
     var users: [User] = []
+    var coa: [Coalition] = []
     
     var viewContent             = CustomView()
     var image                   = CustomImage()
@@ -30,7 +33,7 @@ class ProfilCollectionViewCell: UICollectionViewCell {
     let labelWallet: String = "Wallet                     "
     let labelLocation: String = "Location                 "
     let labelCorectionPoints: String = "Evaluation points   "
-    let labelGrade: String = "Grade                     "
+    let labelGrade: String = "Grade                "
     let charactereSpe: String = "₳"
     
     override init(frame: CGRect) {
@@ -41,12 +44,14 @@ class ProfilCollectionViewCell: UICollectionViewCell {
         fatalError("init coder, has not been implemented")
     }
     
-    func setCell(_ listUser: User) {
+    func setCell(_ listUser: User, _ listCoa: [Coalition]) {
         self.listUser = listUser
+  //      self.slug = listCoa.first!.image_url
         self.users.append(listUser)
-        
+        self.contentView.backgroundColor = .white
         guard let user = self.listUser else {return print("Error User")}
-      
+       // guard let coa = self.listcoa else {return print("Error Coa")}
+        
         self.displayName.setLabelCell()
         self.displayName.text = user.displayname
         self.emailLabel.setLabelCell()
@@ -56,24 +61,30 @@ class ProfilCollectionViewCell: UICollectionViewCell {
         self.correctionPointsLabel.setLabelCell()
         self.correctionPointsLabel.text = labelCorectionPoints + String(user.correctionPoints)
         self.levelLabel.setLabelCell()
+        self.levelLabel.textColor = .black
         self.progressView.setBar()
         self.gradeLabel.setLabelCell()
         
         if let skillSelected = user.cursusUser.first(where: { $0.cursus.id == self.cursus_id}) {
             self.levelLabel.text = "Level " + String(skillSelected.level) + "%"
-            self.progressView.progress = setLevel(level: skillSelected.level)
+            self.progressView.progress = progressView.setLevel(level: skillSelected.level)
             self.gradeLabel.text = labelGrade + (skillSelected.grade ?? "Unknow")
         }
         
         self.loginLabel.setLabelCell()
         self.loginLabel.text = user.login
+        self.loginLabel.textColor = .black
 
         self.image.setImage()
         self.image.makeRouned()
         self.image.dowloadImageSet(url: user.imageUrl)
 
         self.imageBackGround.setImageBackground()
-        self.imageBackGround.image = UIImage(named: "the-order")
+        //print("slug  = \(slug)")
+       // print(coa.slug)
+ 
+       // self.imageBackGround.dowloadImageSet(url: listCoa.first!.image_url)
+      //  self.imageBackGround.image = UIImage(named: slug)
         
         self.viewContent.setView()
         
@@ -83,7 +94,6 @@ class ProfilCollectionViewCell: UICollectionViewCell {
     }
     
     func addsubView() {
-        self.contentView.addSubview(imageBackGround)
         self.contentView.addSubview(viewContent)
         self.contentView.addSubview(displayName)
         self.contentView.addSubview(image)
@@ -94,12 +104,6 @@ class ProfilCollectionViewCell: UICollectionViewCell {
         self.contentView.addSubview(progressView)
         self.contentView.addSubview(loginLabel)
         self.contentView.addSubview(gradeLabel)
-    }
-    
-    func setLevel(level: Float) -> Float{
-        let x = Int(level)
-        let levelPercent = level - Float(x)
-        return levelPercent
     }
     
     func setAnchor() {
@@ -135,19 +139,12 @@ class ProfilCollectionViewCell: UICollectionViewCell {
 
         self.viewContent.topAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
         self.viewContent.leadingAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
-        self.viewContent.trailingAnchor.constraint(equalTo: self.image.leadingAnchor, constant: -25).isActive = true
+        self.viewContent.trailingAnchor.constraint(equalTo: self.image.leadingAnchor, constant: -10).isActive = true
         self.viewContent.bottomAnchor.constraint(equalTo: self.gradeLabel.bottomAnchor, constant: 5).isActive = true
         
         self.image.topAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
         self.image.centerXAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.centerXAnchor, constant: 110).isActive = true
         self.image.heightAnchor.constraint(equalToConstant: 100).isActive = true
         self.image.widthAnchor.constraint(equalToConstant: 100).isActive = true
-
-        self.imageBackGround.leadingAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        self.imageBackGround.trailingAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        self.imageBackGround.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
-        self.imageBackGround.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
-
-
     }
 }

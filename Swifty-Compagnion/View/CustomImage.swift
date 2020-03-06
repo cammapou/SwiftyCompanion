@@ -20,8 +20,6 @@ class CustomImage: UIImageView {
     func setImageBackground() {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.contentMode = .scaleToFill
-       // self.frame.size.height = CGFloat(100)
-      //  self.frame.size.width = CGFloat(100)
     }
     
     

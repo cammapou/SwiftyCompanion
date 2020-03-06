@@ -27,6 +27,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textField.placeholder = "   Login"
         textField.textAlignment = .left
         textField.backgroundColor = .white
+        textField.textColor = .black
+        textField.tintColor = .lightGray
         textField.layer.cornerRadius = 5
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -34,16 +36,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         self.view.addGestureRecognizer(tapGesture)
         self.text.delegate = self
         self.buttonLogin.setLoginButton()
-        buttonLogin.setTitle("Connexion", for: .normal)
+        self.buttonLogin.setTitle("Connexion", for: .normal)
         self.imageBackground.image = UIImage(named: "background_login")
         self.imageBackground.contentMode = .scaleAspectFill
+        
         self.view.addSubview(imageBackground)
         self.view.addSubview(text)
         self.view.addSubview(buttonLogin)
+        
         self.setupAnchor()
         self.buttonLogin.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
     }
@@ -69,9 +75,24 @@ class ViewController: UIViewController, UITextFieldDelegate {
                             newViewcontroller.token = token
                             newViewcontroller.users.append(user!)
                             newViewcontroller.projectUser.append(contentsOf: user!.projectsUser)
+                            newViewcontroller.skillUser.append(contentsOf: user!.cursusUser)
                             newViewcontroller.modalPresentationStyle = .fullScreen
                             self.present(newViewcontroller, animated: true, completion: nil)
                         }
+                    }
+                }
+                APIHelper().getCoa(login: self.textlowerCase, token: token.token) { (coa, error) in
+                    if error != nil {
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: "User not Coalition", message: "User don't have a coalition", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                            self.present(alert, animated: true)
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            newViewcontroller.coalitionUser.append(contentsOf: coa!)
+                        }
+
                     }
                 }
             }
@@ -102,5 +123,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.imageBackground.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
         self.imageBackground.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
         self.imageBackground.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
+        
     }
 }

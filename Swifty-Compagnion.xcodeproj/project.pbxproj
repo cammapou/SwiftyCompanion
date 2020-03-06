@@ -84,9 +84,9 @@
 		822588CC23F30AF3003AE86C /* Swifty-Compagnion */ = {
 			isa = PBXGroup;
 			children = (
-				8255A2F72403FE780076D3BA /* Controller */,
 				822588CD23F30AF3003AE86C /* AppDelegate.swift */,
 				822588CF23F30AF3003AE86C /* SceneDelegate.swift */,
+				8255A2F72403FE780076D3BA /* Controller */,
 				822588EC23F44BE7003AE86C /* View */,
 				822588E123F40404003AE86C /* Model */,
 				822588D623F30AF5003AE86C /* Assets.xcassets */,
