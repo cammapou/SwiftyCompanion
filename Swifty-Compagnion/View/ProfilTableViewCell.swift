@@ -9,12 +9,12 @@
 import UIKit
 
 class ProfilTableViewCell: UITableViewCell {
-    
+   
+    var projectUsers: [ProjectsUser] = []
     let nameLabel = CustomLabel()
     let progressBar = CustomProgressBar()
-    var imageIsValid = CustomImage()
-    var labelPourcent = CustomLabel()
-    var projectUsers: [ProjectsUser] = []
+    let imageIsValid = CustomImage()
+    let labelPourcent = CustomLabel()
    
     var projectUser: ProjectsUser? {
         didSet {
@@ -28,17 +28,14 @@ class ProfilTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        // Configure the view for the selected st ate
     }
     
     func setupCell(project: ProjectsUser) {
         self.contentView.backgroundColor = .white
-
         self.imageIsValid.setImage()
         self.labelPourcent.setLabelSkillCell()
         self.labelPourcent.textColor = .black
@@ -59,14 +56,13 @@ class ProfilTableViewCell: UITableViewCell {
         self.contentView.addSubview(nameLabel)
         self.contentView.addSubview(labelPourcent)
         self.setAnchor()
-        
     }
 
     func setAnchor() {
         self.labelPourcent.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         self.labelPourcent.trailingAnchor.constraint(equalTo: self.imageIsValid.trailingAnchor, constant: -30).isActive = true
         
-        self.imageIsValid.trailingAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
+        self.imageIsValid.trailingAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
         self.imageIsValid.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         self.imageIsValid.heightAnchor.constraint(equalToConstant: 20).isActive = true
         self.imageIsValid.widthAnchor.constraint(equalToConstant: 20).isActive = true
@@ -78,12 +74,12 @@ class ProfilTableViewCell: UITableViewCell {
 
 class ProfilSkillTableViewCell: UITableViewCell {
     
-    let nameLabel = CustomLabel()
-    let progressBar = CustomProgressBar()
-    var labelPourcent = CustomLabel()
     var projectUsers: [Skills] = []
-    let labelLevel = CustomLabel()
-    let progressBarSkill = CustomProgressBar()
+    let nameLabel           = CustomLabel()
+    let progressBar         = CustomProgressBar()
+    let labelPourcent       = CustomLabel()
+    let labelLevel          = CustomLabel()
+    let progressBarSkill    = CustomProgressBar()
    
     var projectUser: Skills? {
         didSet {
@@ -96,12 +92,10 @@ class ProfilSkillTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        // Configure the view for the selected st ate
     }
     
     func setupCell(project: Skills) {
@@ -122,11 +116,9 @@ class ProfilSkillTableViewCell: UITableViewCell {
     }
 
     func setAnchor() {
-        
         self.progressBarSkill.topAnchor.constraint(equalTo: self.labelPourcent.bottomAnchor, constant: 10).isActive = true
         self.progressBarSkill.leadingAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.leadingAnchor, constant: 10).isActive = true
         self.progressBarSkill.trailingAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
-        
         
         self.labelPourcent.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         self.labelPourcent.trailingAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true

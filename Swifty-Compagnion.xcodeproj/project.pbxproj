@@ -17,7 +17,6 @@
 		822588E723F40873003AE86C /* ProjectUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822588E623F40873003AE86C /* ProjectUser.swift */; };
 		822588E923F40ED4003AE86C /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822588E823F40ED4003AE86C /* Token.swift */; };
 		822588EB23F40F60003AE86C /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822588EA23F40F60003AE86C /* APIHelper.swift */; };
-		822588EE23F45D4A003AE86C /* Coalition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822588ED23F45D4A003AE86C /* Coalition.swift */; };
 		82520E37240420B100C38315 /* ProfilTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82520E36240420B100C38315 /* ProfilTableViewCell.swift */; };
 		8255A2E823FC0D050076D3BA /* ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8255A2E723FC0D050076D3BA /* ProfilViewController.swift */; };
 		8255A2EA23FC14840076D3BA /* ExtensionProfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8255A2E923FC14840076D3BA /* ExtensionProfilView.swift */; };
@@ -27,6 +26,7 @@
 		8255A2F223FEC5C50076D3BA /* CustomProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8255A2F123FEC5C50076D3BA /* CustomProgressBar.swift */; };
 		8255A2F423FED32A0076D3BA /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8255A2F323FED32A0076D3BA /* CustomView.swift */; };
 		8255A2F623FEEA200076D3BA /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8255A2F523FEEA200076D3BA /* CustomButton.swift */; };
+		829D6B632412A0710070F797 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829D6B622412A0710070F797 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +42,6 @@
 		822588E623F40873003AE86C /* ProjectUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectUser.swift; sourceTree = "<group>"; };
 		822588E823F40ED4003AE86C /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		822588EA23F40F60003AE86C /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
-		822588ED23F45D4A003AE86C /* Coalition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coalition.swift; sourceTree = "<group>"; };
 		82520E36240420B100C38315 /* ProfilTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilTableViewCell.swift; sourceTree = "<group>"; };
 		8255A2E723FC0D050076D3BA /* ProfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilViewController.swift; sourceTree = "<group>"; };
 		8255A2E923FC14840076D3BA /* ExtensionProfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionProfilView.swift; sourceTree = "<group>"; };
@@ -52,6 +51,7 @@
 		8255A2F123FEC5C50076D3BA /* CustomProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressBar.swift; sourceTree = "<group>"; };
 		8255A2F323FED32A0076D3BA /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		8255A2F523FEEA200076D3BA /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		829D6B622412A0710070F797 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +103,6 @@
 				822588E423F40835003AE86C /* CursusUser.swift */,
 				822588E623F40873003AE86C /* ProjectUser.swift */,
 				822588E823F40ED4003AE86C /* Token.swift */,
-				822588ED23F45D4A003AE86C /* Coalition.swift */,
 				822588EA23F40F60003AE86C /* APIHelper.swift */,
 			);
 			path = Model;
@@ -120,6 +119,7 @@
 				8255A2F123FEC5C50076D3BA /* CustomProgressBar.swift */,
 				8255A2F323FED32A0076D3BA /* CustomView.swift */,
 				8255A2F523FEEA200076D3BA /* CustomButton.swift */,
+				829D6B622412A0710070F797 /* CustomTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -208,11 +208,11 @@
 				8255A2F023FEA7810076D3BA /* CustomLabel.swift in Sources */,
 				8255A2F623FEEA200076D3BA /* CustomButton.swift in Sources */,
 				8255A2E823FC0D050076D3BA /* ProfilViewController.swift in Sources */,
+				829D6B632412A0710070F797 /* CustomTextField.swift in Sources */,
 				822588E323F4041D003AE86C /* User.swift in Sources */,
 				822588E923F40ED4003AE86C /* Token.swift in Sources */,
 				822588E723F40873003AE86C /* ProjectUser.swift in Sources */,
 				8255A2F223FEC5C50076D3BA /* CustomProgressBar.swift in Sources */,
-				822588EE23F45D4A003AE86C /* Coalition.swift in Sources */,
 				8255A2F423FED32A0076D3BA /* CustomView.swift in Sources */,
 				822588E523F40835003AE86C /* CursusUser.swift in Sources */,
 				822588EB23F40F60003AE86C /* APIHelper.swift in Sources */,

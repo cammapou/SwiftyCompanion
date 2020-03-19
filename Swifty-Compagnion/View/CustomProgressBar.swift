@@ -13,9 +13,8 @@ import UIKit
 class CustomProgressBar: UIProgressView {
     
     func setBar() {
-       // self.backgroundColor = .white
-        //self.progressTintColor = UIColor.white
-      //  self.tintColor = UIColor.systemTeal
+        self.layer.cornerRadius = 5
+        self.clipsToBounds = true
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     

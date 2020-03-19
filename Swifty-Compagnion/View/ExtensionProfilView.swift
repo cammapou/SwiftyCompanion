@@ -15,22 +15,20 @@ extension ProfilViewController: UICollectionViewDataSource, UICollectionViewDele
     func setupCollectionAnchor() {
         self.collectionView.topAnchor.constraint(equalTo: self.scrollView.topAnchor, constant: 10).isActive = true
         self.collectionView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
-        self.collectionView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        self.collectionView.heightAnchor.constraint(equalToConstant: 220).isActive = true
         self.collectionView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        
         return users.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
         let listUser = users[indexPath.item]
 
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdCo, for: indexPath) as? ProfilCollectionViewCell {
             cell.backgroundColor = .lightGray
-            cell.setCell(listUser, coalitionUser)
+            cell.setCell(listUser)
             return cell
         }
         return UICollectionViewCell()
@@ -56,15 +54,18 @@ extension ProfilViewController: UITableViewDelegate, UITableViewDataSource {
         self.tableView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
         self.tableView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
         self.tableView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-    
+        self.tableView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10).isActive = true
+        self.tableView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
+
         self.tableViewSkill.topAnchor.constraint(equalTo: self.labelSkill.bottomAnchor, constant: 10).isActive = true
         self.tableViewSkill.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
         self.tableViewSkill.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
         self.tableViewSkill.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        self.tableViewSkill.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10).isActive = true
+        self.tableViewSkill.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
     }
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         var count: Int?
          
         if tableView == self.tableViewSkill {
@@ -81,18 +82,14 @@ extension ProfilViewController: UITableViewDelegate, UITableViewDataSource {
     }
  
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        
         var height: Int = 0
         
         if tableView == self.tableViewSkill {
             height = 50
         }
-        
         if tableView == self.tableView {
             height = 40
         }
-        
         return CGFloat(height)
         
     }
@@ -108,7 +105,6 @@ extension ProfilViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             }
         }
-        
         if tableView == self.tableViewSkill {
             if let skillSelected = skillUser.first(where: { $0.cursus.id == cursus_id}) {
 

@@ -13,13 +13,15 @@ class ProfilViewController: UIViewController {
     let cellIdCo = "profilCollectionViewCell"
     let cellIdTa = "profilTableProj"
     let cellIdSk = "profilTableSkill"
+    
     var users: [User] = []
     var projectUser: [ProjectsUser] = []
     var skillUser: [CursusUser] = []
-    var coalitionUser: [Coalition] = []
+    
     var token: Token?
-    var buttonBack = CustomButton()
-    var cursus_id: Int = 1
+    let cursus_id: Int = 1
+
+    let buttonBack = CustomButton()
     let labelProject = CustomLabel()
     let labelSkill = CustomLabel()
 
@@ -64,11 +66,13 @@ class ProfilViewController: UIViewController {
         
         self.labelProject.setLabelTitle()
         self.labelProject.text = "Projects"
+
         self.labelSkill.setLabelTitle()
         self.labelSkill.text = "Skills"
-        
+                
         self.view.backgroundColor = .white
         self.collectionView.backgroundColor = .white
+        
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.tableView.dataSource = self
@@ -82,7 +86,6 @@ class ProfilViewController: UIViewController {
         
         self.buttonBack.setButton()
         self.buttonBack.setImage(UIImage(named: "return"), for: .normal)
-      
      
         self.view.addSubview(scrollView)
         self.view.addSubview(buttonBack)
@@ -90,7 +93,6 @@ class ProfilViewController: UIViewController {
         self.scrollView.addSubview(collectionView)
         self.scrollView.addSubview(labelProject)
         self.scrollView.addSubview(labelSkill)
-        
         self.scrollView.addSubview(tableView)
         self.scrollView.addSubview(tableViewSkill)
         
@@ -116,22 +118,20 @@ class ProfilViewController: UIViewController {
     
     func setAnchor() {
         
-        
         self.scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         self.scrollView.topAnchor.constraint(equalTo: buttonBack.bottomAnchor, constant: 10).isActive = true
         self.scrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         self.scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
          
-     
         self.buttonBack.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
         self.buttonBack.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10).isActive = true
         self.buttonBack.heightAnchor.constraint(equalToConstant: 30).isActive = true
         self.buttonBack.widthAnchor.constraint(equalToConstant: 30).isActive = true
     
-        self.labelProject.topAnchor.constraint(equalTo: self.collectionView.bottomAnchor, constant: 130).isActive = true
+        self.labelProject.topAnchor.constraint(equalTo: self.collectionView.bottomAnchor, constant: 110).isActive = true
         self.labelProject.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
                 
-        self.labelSkill.topAnchor.constraint(equalTo: self.tableView.bottomAnchor, constant: 20).isActive = true
+        self.labelSkill.topAnchor.constraint(equalTo: self.tableView.bottomAnchor, constant: 10).isActive = true
         self.labelSkill.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
     }
 }
