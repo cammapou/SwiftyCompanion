@@ -23,6 +23,8 @@ struct User: Decodable {
     let cursusUser: [CursusUser]
     let projectsUser: [ProjectsUser]
     
+    /* L'association entre le nom de cas et sa valeur brute vous permet de nommer vos structures de données conformément aux directives de conception de l'API Swift plutôt que d'avoir à faire correspondre les noms, la ponctuation et la capitalisation du format de sérialisation que vous modélisez. CodingKeys */
+    
     enum CodingKeys: String, CodingKey {
         case id
         case login
