@@ -136,7 +136,7 @@ class ProfilCollectionViewCell: UICollectionViewCell {
         self.levelLabel.centerYAnchor.constraint(equalTo: self.progressView.centerYAnchor).isActive = true
         self.levelLabel.centerXAnchor.constraint(equalTo: self.progressView.centerXAnchor).isActive = true
        
-        self.progressView.topAnchor.constraint(equalTo: self.viewContent.bottomAnchor, constant: topAnchor).isActive = true
+        self.progressView.topAnchor.constraint(equalTo: self.viewContent.bottomAnchor, constant: 5).isActive = true
         self.progressView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
         self.progressView.widthAnchor.constraint(equalToConstant: 250).isActive = true
         self.progressView.heightAnchor.constraint(equalToConstant: 25).isActive = true

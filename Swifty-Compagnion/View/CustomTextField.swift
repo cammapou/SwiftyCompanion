@@ -17,6 +17,7 @@ class CustomTextFiel: UITextField {
         self.textColor = .black
         self.tintColor = .lightGray
         self.layer.cornerRadius = 5
+        self.autocorrectionType = .no
         self.translatesAutoresizingMaskIntoConstraints = false
     }
 }

@@ -50,19 +50,16 @@ extension ProfilViewController: UICollectionViewDataSource, UICollectionViewDele
 extension ProfilViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupAnchorTableView() {
+        
         self.tableView.topAnchor.constraint(equalTo: self.labelProject.bottomAnchor, constant: 10).isActive = true
         self.tableView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
         self.tableView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
         self.tableView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        self.tableView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10).isActive = true
-        self.tableView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
 
         self.tableViewSkill.topAnchor.constraint(equalTo: self.labelSkill.bottomAnchor, constant: 10).isActive = true
         self.tableViewSkill.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
         self.tableViewSkill.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
         self.tableViewSkill.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        self.tableViewSkill.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10).isActive = true
-        self.tableViewSkill.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
     }
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

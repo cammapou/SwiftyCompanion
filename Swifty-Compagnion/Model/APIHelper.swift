@@ -16,7 +16,7 @@ class APIHelper {
     
     private let _baseUrl = "https://api.intra.42.fr/v2"
     private let _uidClient = "b2ca96e4dfe879f51b3a3105bc55eac9a9a36a4c4671230d0c08db3db4542d75"
-    private let secretKey = ""
+    private let secretKey = "7d84e8d6f6385aebc5ebfedc31c8221acd7d002d19d589c84506cb401fa2ac0e"
     
     var urlToken: String {
       return "/oauth/token"
